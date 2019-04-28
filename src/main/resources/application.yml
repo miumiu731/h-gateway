@@ -3,13 +3,16 @@ server:
 spring:
   application:
     name: spring-cloud-gateway
+  profiles:
+    active: h_route
   cloud:
     gateway:
       routes:
-      - id: hperson_route
-        uri: http://demo.hperson.com
+      - id: h_route
+        uri: http://demo.hperson.com/get
         predicates:
-        - Path=/secondMode
+        - Path=/api/{segment}
+    profiles: h_route
   
         
 eureka:
